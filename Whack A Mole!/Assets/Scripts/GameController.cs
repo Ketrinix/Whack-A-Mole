@@ -35,22 +35,31 @@ public class GameController : MonoBehaviour
 
     private Mole GetNextHiddenMole()
     {
+        // Obtener todos los topos ocultos en una lista
+        List<Mole> hiddenMoles = new();
+
         foreach (Mole mole in moles)
         {
             if (mole.IsHidden())
             {
-                return mole;
+                hiddenMoles.Add(mole);
             }
         }
 
-        return null;
+        // Si hay topos ocultos, elegir uno al azar
+        if (hiddenMoles.Count > 0)
+        {
+            return hiddenMoles[Random.Range(0, hiddenMoles.Count)];
+        }
+
+        return null; // No hay topos disponibles
     }
 
     private IEnumerator SpawnMolesInSequence()
     {
         while (true)
         {
-            if (activeMoles < 3)
+            if (activeMoles < 5)
             {
                 Mole nextMole = GetNextHiddenMole();
 
@@ -58,11 +67,11 @@ public class GameController : MonoBehaviour
                 {
                     activeMoles++;
 
-                    nextMole.StartCoroutine(nextMole.AppearAndDisappear());
+                    nextMole.StartMoleSpawnerCorutine();
                 }
             }
 
-            yield return new WaitForSeconds(0.25f); // Pequeña espera antes de revisar de nuevo
+            yield return new WaitForSeconds(1f); // Pequeña espera antes de revisar de nuevo
         }
     }
 }
