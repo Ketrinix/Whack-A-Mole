@@ -41,14 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Cloud
+    uniqueID: 818882405
+    locked: 0
   - name: Mountain
     uniqueID: 2559834109
     locked: 0
   - name: Hole
     uniqueID: 3752306119
-    locked: 0
-  - name: Cloud
-    uniqueID: 818882405
     locked: 0
   - name: UI
     uniqueID: 4252963873
