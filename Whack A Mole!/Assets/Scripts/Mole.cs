@@ -10,6 +10,11 @@ public class Mole : MonoBehaviour
     private Vector2 hiddenScale = new(0f, 0f);
     private Vector2 visibleScale = new(1f, 1f);
 
+    private void Start()
+    {
+        transform.localScale = hiddenScale;
+    }
+
     public IEnumerator AppearAndDisappear()
     {
         yield return StartCoroutine(ScaleMole(hiddenScale, visibleScale, appearDuration));

@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
                 {
                     activeMoles++;
 
-                    StartCoroutine(nextMole.AppearAndDisappear());
+                    nextMole.StartCoroutine(nextMole.AppearAndDisappear());
                 }
             }
 
